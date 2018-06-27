@@ -68,7 +68,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // если выбран пункт меню "Служба сообщений Lyrix" - перещелкиваем его
         if (item.equals(serviceSwitcherItem)) {
+            // https://issuetracker.google.com/issues/37074309 перещелкивается без анимации
             serviceSwitcher.setChecked(!serviceSwitcher.isChecked());
+            return false;
         }
 
         drawer.closeDrawer(GravityCompat.START); // закрываем меню после выбора
