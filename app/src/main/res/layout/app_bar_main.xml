@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ru.aamsystems.lyrixnotification2.UI.Activities.MainActivity">
+
+    <!-- Основной макет, содержащий контейнер для фрагментов и  Toolbar
+         Вкладывается в макет activity_main и располагается под боковым выдвижным меню -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appBarLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+        </android.support.design.widget.AppBarLayout>
+
+        <!-- defaultNavHost во фрагменте - обработка нажатия кнопки Back (возврат к предыдущему экрану) -->
+
+        <fragment
+            android:id="@+id/nav_host_fragment"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:defaultNavHost="true"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
+            app:navGraph="@navigation/navigation_graph" />
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

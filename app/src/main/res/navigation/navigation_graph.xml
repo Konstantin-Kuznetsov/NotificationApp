@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/notificationListFragment">
+
+    <fragment
+        android:id="@+id/notificationListFragment"
+        android:name="ru.aamsystems.lyrixnotification2.UI.Fragments.NotificationListFragment"
+        android:label="Сообщения Lyrix"
+        tools:layout="@layout/fragment_notification_list">
+        <action
+            android:id="@+id/action_notificationListFragment_to_notificationDetailsFragment"
+            app:destination="@+id/notificationDetailsFragment"
+            app:enterAnim="@anim/nav_custom_enter_anim"
+            app:exitAnim="@anim/nav_custom_exit_anim"
+            app:popEnterAnim="@anim/nav_custom_pop_enter_anim"
+            app:popExitAnim="@anim/nav_custom_pop_exit_anim"
+            app:popUpTo="@+id/notificationListFragment" />
+        <action
+            android:id="@+id/action_notificationListFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/nav_custom_enter_anim"
+            app:exitAnim="@anim/nav_custom_exit_anim"
+            app:popEnterAnim="@anim/nav_custom_pop_enter_anim"
+            app:popExitAnim="@anim/nav_custom_pop_exit_anim"
+            app:popUpTo="@+id/notificationListFragment" />
+        <action
+            android:id="@+id/action_notificationListFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment"
+            app:enterAnim="@anim/nav_custom_enter_anim"
+            app:exitAnim="@anim/nav_custom_exit_anim"
+            app:popEnterAnim="@anim/nav_custom_pop_enter_anim"
+            app:popExitAnim="@anim/nav_custom_pop_exit_anim"
+            app:popUpTo="@+id/notificationListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationDetailsFragment"
+        android:name="ru.aamsystems.lyrixnotification2.UI.Fragments.NotificationDetailsFragment"
+        android:label="Подробная информация о сообщении"
+        tools:layout="@layout/fragment_notification_details" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="ru.aamsystems.lyrixnotification2.UI.Fragments.SettingsFragment"
+        android:label="Настройки"
+        tools:layout="@layout/fragment_settings">
+
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="ru.aamsystems.lyrixnotification2.UI.Fragments.AboutFragment"
+        android:label="О приложении"
+        tools:layout="@layout/fragment_about" />
+</navigation>
