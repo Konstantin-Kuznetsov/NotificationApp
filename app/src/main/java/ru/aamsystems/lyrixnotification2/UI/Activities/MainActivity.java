@@ -51,14 +51,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     // Переход происходит по указанному для пункта id в activity_main_drawer
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        navigationView.setCheckedItem(item.getItemId()); // выделение выбранного пункта меню
         drawer.closeDrawer(GravityCompat.START); // закрываем меню после выбора
         return NavigationUI.onNavDestinationSelected(item, navController);
     }
 
-    // Обработка нажатия стрелки "назад"
+    // Обработка нажатия стрелки "назад".
     @Override
     public boolean onSupportNavigateUp() {
         return NavigationUI.navigateUp(drawer, navController);
     }
+
 }

@@ -43,4 +43,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
     implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha02'
     implementation 'android.arch.navigation:navigation-ui:1.0.0-alpha02'
+    implementation "android.arch.work:work-runtime:1.0.0-alpha02"
 }
