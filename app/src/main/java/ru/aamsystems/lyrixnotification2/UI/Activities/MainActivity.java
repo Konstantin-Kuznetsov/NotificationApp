@@ -7,6 +7,7 @@ package ru.aamsystems.lyrixnotification2.UI.Activities;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import androidx.navigation.ui.NavigationUI;
 import ru.aamsystems.lyrixnotification2.R;
 
 import android.os.Bundle;
+import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavController navController; // Контроллер навигации по фрагментам
     private DrawerLayout drawer; // Корневой контейнер, содержащий выдвижное навигационное меню
     private NavigationView navigationView; // Навигационное меню
+    private SwitchCompat serviceSwitcher;
+    private MenuItem serviceSwitcherItem; // Пункт меню, содержащий serviceSwitcher
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Установить Toolbar.
         setSupportActionBar(toolbar);
 
+        // Инициализация переключателя службы. Обработка нажатий в onNavigationItemSelected()
+        serviceSwitcherItem = navigationView.getMenu().findItem(R.id.nav_switch_service);
+        serviceSwitcher = serviceSwitcherItem.getActionView().findViewById(R.id.switcher);
+
+        serviceSwitcher
+                .setOnCheckedChangeListener((compoundButton, b)
+                -> Snackbar.make(compoundButton, (serviceSwitcher.isChecked())
+                        ? "Служба сообщений Lyrix включена." : "Служба сообщений Lyrix отключена.",
+                Snackbar.LENGTH_LONG).setAction("Action", null).show());
+
         // Привязка навигационного контроллера к выдвижному меню, с синхронизацией
         // с ActionBar (меняет заголовок в соответствии с фрагментом, на который переходим
         navigationView.setNavigationItemSelectedListener(this);
@@ -51,6 +65,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     // Переход происходит по указанному для пункта id в activity_main_drawer
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        // если выбран пункт меню "Служба сообщений Lyrix" - перещелкиваем его
+        if (item.equals(serviceSwitcherItem)) {
+            serviceSwitcher.setChecked(!serviceSwitcher.isChecked());
+        }
+
         drawer.closeDrawer(GravityCompat.START); // закрываем меню после выбора
         return NavigationUI.onNavDestinationSelected(item, navController);
     }
