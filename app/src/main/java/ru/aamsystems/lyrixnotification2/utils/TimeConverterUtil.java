@@ -1,4 +1,4 @@
-package ru.aamsystems.lyrixnotification2.Utils;
+package ru.aamsystems.lyrixnotification2.utils;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;

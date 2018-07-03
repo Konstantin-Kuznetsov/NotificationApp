@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,8 @@ public class NotificationListFragment extends Fragment {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_notification_list, container, false);
         notificationsListAdapter = new NotificationsListAdapter();
-        binding.notoficationsRecyclerView.setAdapter(notificationsListAdapter);
+        binding.notificationsRecyclerView.setAdapter(notificationsListAdapter);
+        binding.notificationsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         // Флаг начала процесса загрузки данных в список (обновление из БД, запрос в сеть и т.д.. )
         // После окончания подгрузки - снимается, на этот флаг можно повесить изменение UI.
         binding.setIsDataLoading(true);

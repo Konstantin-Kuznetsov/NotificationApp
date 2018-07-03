@@ -1,6 +1,6 @@
 package ru.aamsystems.lyrixnotification2.model.pojo;
 
-import ru.aamsystems.lyrixnotification2.Utils.TimeConverterUtil;
+import ru.aamsystems.lyrixnotification2.utils.TimeConverterUtil;
 
 /**
  *  Сообщение Lyrix, содержащее данные для отображения
