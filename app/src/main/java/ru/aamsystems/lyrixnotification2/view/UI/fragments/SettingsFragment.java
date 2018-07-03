@@ -1,4 +1,4 @@
-package ru.aamsystems.lyrixnotification2.UI.Fragments;
+package ru.aamsystems.lyrixnotification2.view.UI.fragments;
 
 import android.content.Context;
 import android.os.Bundle;

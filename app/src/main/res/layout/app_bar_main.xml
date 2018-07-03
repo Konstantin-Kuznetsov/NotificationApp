@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ru.aamsystems.lyrixnotification2.UI.Activities.MainActivity">
+    tools:context="ru.aamsystems.lyrixnotification2.view.UI.activities.MainActivity">
 
     <!-- Основной макет, содержащий контейнер для фрагментов и  Toolbar
          Вкладывается в макет activity_main и располагается под боковым выдвижным меню -->
