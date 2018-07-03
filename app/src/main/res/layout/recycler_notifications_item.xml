@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
 
+    <data>
+        <!-- DataBinding сообщения к карточке этого сообщения для отображения в RecyclerView -->
+        <variable
+            name="notificationItemData"
+            type="ru.aamsystems.lyrixnotification2.model.pojo.LyrixNotification" />
+
+        <!-- Callback для обработки клика на карточке для открытия фрагмента с подробной информацийе -->
+        <variable
+            name="callback"
+            type="ru.aamsystems.lyrixnotification2.view.callback.OnItemClickCallback" />
+    </data>
 
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -117,6 +129,6 @@
 
     </android.support.v7.widget.CardView>
 
-
+</layout>
 
 
