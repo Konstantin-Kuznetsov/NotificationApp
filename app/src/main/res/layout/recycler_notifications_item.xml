@@ -2,10 +2,19 @@
 <layout>
 
     <data>
+        <!-- Импорт для использования View.VISIBLE и View.GONE -->
+        <import type="android.view.View" />
+
         <!-- DataBinding сообщения к карточке этого сообщения для отображения в RecyclerView -->
         <variable
             name="notificationItemData"
             type="ru.aamsystems.lyrixnotification2.model.pojo.LyrixNotification" />
+
+        <!-- Флаг управляющий вставкой даты-разделителя сверху от CardView
+             для группировки сообщений по дате -->
+        <variable
+            name="dateHeaderVisibility"
+            type="boolean" />
 
         <!-- Callback для обработки клика на карточке для открытия фрагмента с подробной информацией -->
         <variable
@@ -13,22 +22,41 @@
             type="ru.aamsystems.lyrixnotification2.view.callback.OnItemClickCallback" />
     </data>
 
-<android.support.v7.widget.CardView
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:onClick="@{(view) ->  callback.onClick(view, notificationItemData)}"
-    style="@style/CardView.Light"
-    android:layout_marginTop="8dp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginBottom="8dp"
-    app:cardCornerRadius="8dp"
-    android:elevation="@dimen/cardview_default_elevation">
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/messageDateHeaderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:dateText="notificationItemData.messageTime"
+        android:textStyle="bold"
+        app:visibleHeader="dateHeaderVisibility"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/notificationCardView"
+        style="@style/CardView.Light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:elevation="@dimen/cardview_default_elevation"
+        android:onClick="@{(view) ->  callback.onClick(view, notificationItemData)}"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/messageDateHeaderText">
 
         <android.support.constraint.ConstraintLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -79,7 +107,7 @@
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/messageTimeCardText"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/messageCodeCardText"
@@ -127,7 +155,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="@{notificationItemData.messageTime}"
+                app:timeText="notificationItemData.messageTime"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -136,6 +164,8 @@
         </android.support.constraint.ConstraintLayout>
 
     </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>
 
 </layout>
 

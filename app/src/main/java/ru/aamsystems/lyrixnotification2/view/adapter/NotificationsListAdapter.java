@@ -13,6 +13,7 @@ import java.util.List;
 import ru.aamsystems.lyrixnotification2.databinding.RecyclerNotificationsItemBinding;
 import ru.aamsystems.lyrixnotification2.model.pojo.LyrixNotification;
 import ru.aamsystems.lyrixnotification2.R;
+import ru.aamsystems.lyrixnotification2.utils.TimeConverterUtil;
 import ru.aamsystems.lyrixnotification2.view.callback.OnItemClickCallback;
 
 /**
@@ -86,6 +87,16 @@ public class NotificationsListAdapter extends RecyclerView.Adapter<Notifications
 
     @Override
     public void onBindViewHolder(NotificationViewHolder holder, int position) {
+        if (position == 0 ||
+                TimeConverterUtil.compareDates(
+                        notificationArrayList.get(position - 1).getMessageTime(),
+                        notificationArrayList.get(position).getMessageTime()) != 0) {
+            holder.binding.setDateHeaderVisibility(true);
+        } else {
+            holder.binding.setDateHeader(false);
+        }
+
+        holder.binding.setDateHeaderVisibility(true);
         holder.binding.setNotificationItemData(notificationArrayList.get(position));
         holder.binding.executePendingBindings();
 

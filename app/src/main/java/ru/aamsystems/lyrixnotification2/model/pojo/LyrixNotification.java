@@ -23,5 +23,5 @@ public interface LyrixNotification {
     long getMessageID();
 
     // Unix UTC
-    String getMessageTime();
+    long getMessageTime();
 }

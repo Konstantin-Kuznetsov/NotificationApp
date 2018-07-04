@@ -46,8 +46,8 @@ public class SimpleLyrixNotification implements LyrixNotification {
     }
 
     @Override
-    public String getMessageTime() {
-        return TimeConverterUtil.convertTime(messageTime, "dd/MM/yyyy") ;
+    public long getMessageTime() {
+        return messageTime;
     }
 
     @Override
