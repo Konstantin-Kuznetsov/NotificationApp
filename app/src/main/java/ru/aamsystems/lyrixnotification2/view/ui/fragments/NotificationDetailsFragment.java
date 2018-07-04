@@ -1,4 +1,4 @@
-package ru.aamsystems.lyrixnotification2.view.UI.fragments;
+package ru.aamsystems.lyrixnotification2.view.ui.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,14 +11,14 @@ import android.view.ViewGroup;
 
 import ru.aamsystems.lyrixnotification2.R;
 
-public class SettingsFragment extends Fragment {
+public class NotificationDetailsFragment extends Fragment {
 
-    public SettingsFragment() {
+    public NotificationDetailsFragment() {
         // Required empty public constructor
     }
 
-    public static SettingsFragment newInstance(String param1, String param2) {
-        return new SettingsFragment();
+    public static NotificationDetailsFragment newInstance() {
+        return new NotificationDetailsFragment();
     }
 
     @Override
@@ -30,7 +30,7 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        return inflater.inflate(R.layout.fragment_notification_details, container, false);
     }
 
     @Override

@@ -13,7 +13,7 @@ import java.util.Locale;
 public class TimeConverterUtil {
     // Принимает время в Unix, UTC формате и паттерн преобразования, возвращает строку.
     public static String convertTime(long time, String pattern){
-        Date date = new Date(time*1000);
+        Date date = new Date(time);
         Format sdf = new SimpleDateFormat(pattern, Locale.getDefault());
         return sdf.format(date);
     }

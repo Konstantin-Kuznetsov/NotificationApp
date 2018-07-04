@@ -66,7 +66,7 @@ public class NotificationsListAdapter extends RecyclerView.Adapter<Notifications
     public NotificationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         // Установка объекта для блока <data> макета
-        // Биндер данных из объекта-сообщения в элементы UI
+        // Биндер данных из объекта-сообщения в элементы ui
         RecyclerNotificationsItemBinding binding = DataBindingUtil
                 .inflate(LayoutInflater.from(parent.getContext()), R.layout.recycler_notifications_item,
                         parent, false);
@@ -74,6 +74,13 @@ public class NotificationsListAdapter extends RecyclerView.Adapter<Notifications
         binding.setCallback(new OnItemClickCallback());
 
         return new NotificationViewHolder(binding);
+    }
+
+    // Возвращает константу типа сообщения - информационное, ошибка и т.д.
+    // Используется для подгрузки разных типов макетов для разных типов сообщений Lyrix.
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
     }
 
     @Override

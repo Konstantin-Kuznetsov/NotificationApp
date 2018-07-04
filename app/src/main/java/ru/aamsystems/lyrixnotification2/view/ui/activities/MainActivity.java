@@ -1,4 +1,4 @@
-package ru.aamsystems.lyrixnotification2.UI.Activities;
+package ru.aamsystems.lyrixnotification2.view.ui.activities;
 
 //import androidx.appcompat.app.AppCompatActivity;
 //import androidx.appcompat.widget.Toolbar;
@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private NavController navController; // Контроллер навигации по фрагментам
     private DrawerLayout drawer; // Корневой контейнер, содержащий выдвижное навигационное меню
-    private NavigationView navigationView; // Навигационное меню
     private SwitchCompat serviceSwitcher;
     private MenuItem serviceSwitcherItem; // Пункт меню, содержащий serviceSwitcher
 
@@ -40,9 +39,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // инициализация компонентов активити
         Toolbar toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-
-        // Установить Toolbar.
+        // Навигационное меню
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        // Установка Toolbar
         setSupportActionBar(toolbar);
 
         // Инициализация переключателя службы. Обработка нажатий в onNavigationItemSelected()
@@ -66,10 +65,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        // если выбран пункт меню "Служба сообщений Lyrix" - перещелкиваем его
+        // если выбран пункт меню "Служба сообщений Lyrix"
         if (item.equals(serviceSwitcherItem)) {
             // https://issuetracker.google.com/issues/37074309 перещелкивается без анимации
-            serviceSwitcher.setChecked(!serviceSwitcher.isChecked());
+            //serviceSwitcher.setChecked(!serviceSwitcher.isChecked());
             return false;
         }
 

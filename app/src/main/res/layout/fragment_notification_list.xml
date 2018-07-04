@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <!-- Флаг начала загрузки данных, для автоматического изменения UI  при загрузке,
+        <!-- Флаг начала загрузки данных, для автоматического изменения ui  при загрузке,
          например, app:visibleGone="@{isDataLoading}" для скрытия элемента -->
         <variable
             name="isDataLoading"

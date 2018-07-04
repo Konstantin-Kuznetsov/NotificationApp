@@ -7,7 +7,7 @@
             name="notificationItemData"
             type="ru.aamsystems.lyrixnotification2.model.pojo.LyrixNotification" />
 
-        <!-- Callback для обработки клика на карточке для открытия фрагмента с подробной информацийе -->
+        <!-- Callback для обработки клика на карточке для открытия фрагмента с подробной информацией -->
         <variable
             name="callback"
             type="ru.aamsystems.lyrixnotification2.view.callback.OnItemClickCallback" />
@@ -18,6 +18,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:onClick="@{(view) ->  callback.onClick(view, notificationItemData)}"
     style="@style/CardView.Light"
     android:layout_marginTop="8dp"
     android:layout_marginLeft="8dp"
