@@ -80,6 +80,7 @@ public class NotificationsListAdapter extends RecyclerView.Adapter<Notifications
     // Используется для подгрузки разных типов макетов для разных типов сообщений Lyrix.
     @Override
     public int getItemViewType(int position) {
+        // todo переопределить в соответствии с имеющимися типами сообщений
         return super.getItemViewType(position);
     }
 

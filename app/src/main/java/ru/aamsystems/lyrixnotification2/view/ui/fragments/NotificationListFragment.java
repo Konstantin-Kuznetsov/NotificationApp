@@ -50,6 +50,7 @@ public class NotificationListFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_notification_list, container, false);
         notificationsListAdapter = new NotificationsListAdapter();
         binding.notificationsRecyclerView.setAdapter(notificationsListAdapter);
+        binding.notificationsRecyclerView.setHasFixedSize(true);
         binding.notificationsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         // Флаг начала процесса загрузки данных в список (обновление из БД, запрос в сеть и т.д.. )
         // После окончания подгрузки - снимается, на этот флаг можно повесить изменение ui.

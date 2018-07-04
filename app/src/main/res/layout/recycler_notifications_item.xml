@@ -34,14 +34,23 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/NotificationStatusImage"
+                android:id="@+id/notificationStatusPlaceholder"
+                android:layout_width="8dp"
+                android:layout_height="0dp"
+                android:background="@color/priorityLow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/notificationStatusImage"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/notificationStatusPlaceholder"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/not_applicable" />
 
@@ -56,7 +65,7 @@
                 android:background="@drawable/separator_gradient_vert"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/NotificationStatusImage"
+                app:layout_constraintStart_toEndOf="@id/notificationStatusImage"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
@@ -70,8 +79,7 @@
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/messageTimeCardText"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 android:id="@+id/messageCodeCardText"
@@ -124,7 +132,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
         </android.support.constraint.ConstraintLayout>
 
