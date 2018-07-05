@@ -87,16 +87,16 @@ public class NotificationsListAdapter extends RecyclerView.Adapter<Notifications
 
     @Override
     public void onBindViewHolder(NotificationViewHolder holder, int position) {
+
         if (position == 0 ||
                 TimeConverterUtil.compareDates(
                         notificationArrayList.get(position - 1).getMessageTime(),
                         notificationArrayList.get(position).getMessageTime()) != 0) {
             holder.binding.setDateHeaderVisibility(true);
         } else {
-            holder.binding.setDateHeader(false);
+            holder.binding.setDateHeaderVisibility(false);
         }
 
-        holder.binding.setDateHeaderVisibility(true);
         holder.binding.setNotificationItemData(notificationArrayList.get(position));
         holder.binding.executePendingBindings();
 

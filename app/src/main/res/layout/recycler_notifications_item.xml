@@ -28,13 +28,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <!-- Дата нового дня для  группировки сообщений в овальной обводке rounded_corners_shape.xml -->
+
     <TextView
         android:id="@+id/messageDateHeaderText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:dateText="notificationItemData.messageTime"
+        app:dateText="@{notificationItemData.messageTime}"
         android:textStyle="bold"
-        app:visibleHeader="dateHeaderVisibility"
+        android:visibility="@{dateHeaderVisibility ? View.VISIBLE : View.GONE}"
+        android:background="@drawable/rounded_corners_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -155,7 +158,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                app:timeText="notificationItemData.messageTime"
+                app:timeText="@{notificationItemData.messageTime}"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

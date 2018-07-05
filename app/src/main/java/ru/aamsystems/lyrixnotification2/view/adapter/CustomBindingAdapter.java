@@ -13,10 +13,6 @@ import ru.aamsystems.lyrixnotification2.utils.TimeConverterUtil;
  * Created by k.kuznetsov on 04.07.2018
  */
 public class CustomBindingAdapter {
-    @BindingAdapter("visibleHeader")
-    public static void showHide(View view, boolean show) {
-        view.setVisibility(show ? View.VISIBLE : View.GONE);
-    }
 
     @BindingAdapter("dateText")
     public static void convertToDate(TextView view, long dateUnix) {
