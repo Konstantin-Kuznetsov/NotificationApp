@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#002366</color>
     <color name="colorAccent">#c2134e</color>
     <color name="background">#f1f1f1</color>
+    <color name="colorSplashBackground">#cac6e9</color>
+    <color name="background_dark">#9e9e9e</color>
     <color name="priorityLow">#68a042</color>
     <color name="priorityMid">#154A9F</color>
     <color name="priorityHigh">#D41F26</color>
