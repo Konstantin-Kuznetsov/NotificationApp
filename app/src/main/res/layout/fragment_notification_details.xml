@@ -1,15 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="ru.aamsystems.lyrixnotification2.view.ui.fragments.NotificationDetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <!-- Импорт для использования View.VISIBLE и View.GONE -->
+        <import type="android.view.View" />
+
+        <!-- DataBinding сообщения к карточке этого сообщения для отображения в RecyclerView -->
+        <variable
+            name="notificationItemData"
+            type="ru.aamsystems.lyrixnotification2.model.pojo.SimpleLyrixNotification" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="30sp"
-        android:text="FRAGMENT NOTIFICATION DETAILS" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+
+        <ImageView
+            android:id="@+id/notificationStatusImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/not_applicable"
+            tools:src="@tools:sample/avatars[11]" />
+
+
+        <TextView
+            android:id="@+id/messageCodeCardText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text='@{notificationItemData.messageCode ?? @string/no_data_text}'
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/messageTimeCardText"
+            tools:text="@tools:sample/lorem" />
+
+        <TextView
+            android:id="@+id/messageSourceCardText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text='@{notificationItemData.messageSource ?? @string/no_data_text}'
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/messageCodeCardText"
+            tools:text="@tools:sample/lorem" />
+
+        <TextView
+            android:id="@+id/messageCauseCardText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text='@{notificationItemData.messageCause ?? @string/no_data_text}'
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/messageSourceCardText"
+            tools:text="@tools:sample/lorem" />
+
+        <TextView
+            android:id="@+id/messageTimeCardText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notificationStatusImage"
+            app:timeText="@{notificationItemData.messageTime}"
+            tools:text="@tools:sample/date/hhmmss" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</layout>
+
+

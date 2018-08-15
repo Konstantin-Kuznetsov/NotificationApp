@@ -39,7 +39,7 @@
         android:id="@+id/notificationDetailsFragment"
         android:name="ru.aamsystems.lyrixnotification2.view.ui.fragments.NotificationDetailsFragment"
         android:label="Подробная информация о сообщении"
-        tools:layout="@layout/fragment_notification_details" />
+        tools:layout="@layout/fragment_notification_details" ></fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="ru.aamsystems.lyrixnotification2.view.ui.fragments.SettingsFragment"

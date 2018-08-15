@@ -16,12 +16,20 @@ public class SimpleLyrixNotification implements LyrixNotification {
     private long messageTime;
     private long messageID;
 
-    public SimpleLyrixNotification(String messageCode, String messageSource, String messageCause, String messageStatus, long messageTime) {
+    public SimpleLyrixNotification(String messageCode,
+                                   String messageSource,
+                                   String messageCause,
+                                   String messageStatus,
+                                   long messageTime,
+                                   long messageID) {
+
         this.messageCode = messageCode;
         this.messageSource = messageSource;
         this.messageCause = messageCause;
         this.messageStatus = messageStatus;
         this.messageTime = messageTime;
+        this.messageID = messageID;
+
     }
 
 
