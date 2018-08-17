@@ -55,14 +55,14 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     // Тестирование
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
     // Jetpack:
     // navigation
-    implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha02'
-    implementation 'android.arch.navigation:navigation-ui:1.0.0-alpha02'
+    implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha05'
+    implementation 'android.arch.navigation:navigation-ui:1.0.0-alpha05'
     // background worker
-    implementation 'android.arch.work:work-runtime:1.0.0-alpha04'
+    implementation 'android.arch.work:work-runtime:1.0.0-alpha07'
     // lifecycle
     implementation 'android.arch.lifecycle:runtime:1.1.1'
     implementation 'android.arch.lifecycle:extensions:1.1.1'

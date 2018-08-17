@@ -1,5 +1,7 @@
 package ru.aamsystems.lyrixnotification2.view.ui.fragments;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ import ru.aamsystems.lyrixnotification2.databinding.FragmentNotificationListBind
 import ru.aamsystems.lyrixnotification2.model.pojo.LyrixNotification;
 import ru.aamsystems.lyrixnotification2.model.pojo.SimpleLyrixNotification;
 import ru.aamsystems.lyrixnotification2.view.adapter.NotificationsListAdapter;
+import ru.aamsystems.lyrixnotification2.viewmodel.NotificationListViewModel;
 
 public class NotificationListFragment extends Fragment {
 
@@ -29,6 +32,8 @@ public class NotificationListFragment extends Fragment {
     // Биндер fragment_notification_list.xml к элементам ui фрагмента со списком сообщений.
     // Биндер всегда должен называться так же как и xml, с приставкой Binder к названию.
     private FragmentNotificationListBinding binding;
+
+    private NotificationListViewModel viewModel;
 
     public NotificationListFragment() {
         // Required empty public constructor
@@ -61,28 +66,26 @@ public class NotificationListFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        viewModel = ViewModelProviders.of(this).get(NotificationListViewModel.class);
 
-        //todo тут подключение к источнику данных и обновление списка (устанавливается адаптеру), сделать с LiveData
-        ArrayList<? extends LyrixNotification> lyrixNotificationsList
-                = new ArrayList<>(Arrays.asList(
-                        new SimpleLyrixNotification("messageCode1", "messageSource1", "messageCause1", "messageStatus1", new Date().getTime(), 55665),
-                        new SimpleLyrixNotification("messageCode2", "messageSource2", "messageCause2", "messageStatus2", new Date().getTime(), 5437),
-                        new SimpleLyrixNotification("messageCode3", "messageSource3", "messageCause3", "messageStatus3", (new Date().getTime()) + 1000 * 60 * 60 * 24, 23556),
-                        new SimpleLyrixNotification("messageCode4", "messageSource4", "messageCause4", "messageStatus4", (new Date().getTime()) + 1000 * 60 * 60 * 24, 772447),
-                        new SimpleLyrixNotification("messageCode5", "messageSource5", "messageCause5", "messageStatus5", (new Date().getTime()) + 1000 * 60 * 60 * 24 *2, 34634),
-                        new SimpleLyrixNotification("messageCode6", "messageSource6", "messageCause6", "messageStatus6", (new Date().getTime()) + 1000 * 60 * 60 * 24 * 2, 77252),
-                        new SimpleLyrixNotification("messageCode7", "messageSource7", "messageCause7", "messageStatus7", (new Date().getTime()) + 1000 * 60 * 60 * 24 * 3, 457),
-                        new SimpleLyrixNotification("messageCode8", "messageSource8", "messageCause8", "messageStatus8", (new Date().getTime()) + 1000 * 60 * 60 * 24 * 3, 618),
-                        new SimpleLyrixNotification("messageCode9", "messageSource9", "messageCause9", "messageStatus9", (new Date().getTime()) + 1000 * 60 * 60 * 24 * 2, 8424),
-                        new SimpleLyrixNotification("messageCode10", "messageSource10", "messageCause10", "messageStatus10", (new Date().getTime()) + 1000 * 60 * 60 * 24 * 3, 3722),
-                        new SimpleLyrixNotification("messageCode11", "messageSource11", "messageCause11", "messageStatus11", (new Date().getTime()) + 1000 * 60 * 60 * 24 * 3, 6235),
-                        new SimpleLyrixNotification("messageCode12", "messageSource12", "messageCause12", "messageStatus12", (new Date().getTime()) + 1000 * 60 * 60 * 24 * 3, 1336),
-                        new SimpleLyrixNotification("messageCode13", "messageSource13", "messageCause13", "messageStatus13", (new Date().getTime()) + 1000 * 60 * 60 * 24 * 4, 347),
-                        new SimpleLyrixNotification("messageCode14", "messageSource14", "messageCause14", "messageStatus14", (new Date().getTime()) + 1000 * 60 * 60 * 24 * 5, 7245),
-                        new SimpleLyrixNotification("messageCode15", "messageSource15", "messageCause15", "messageStatus15", (new Date().getTime()) + 1000 * 60 * 60 * 24 * 5, 56134)
-        ));
+        // подписка на изменения списка сообщений
+        subscribeToNotificationListChanges();
 
-        notificationsListAdapter.setOrUpdateDataset(lyrixNotificationsList);
+    }
+
+    // подписка на изменение списка сообщений и обновление UI.
+    private void subscribeToNotificationListChanges() {
+        binding.setIsDataLoading(true);
+
+        viewModel.getNotificationsList()
+                .observe(this, new Observer<ArrayList<? extends LyrixNotification>>() {
+                    @Override
+                    public void onChanged(@Nullable ArrayList<? extends LyrixNotification> lyrixNotificationsList) {
+                        notificationsListAdapter.setOrUpdateDataset(lyrixNotificationsList);
+                    }
+                });
+
+        binding.setIsDataLoading(false);
     }
 
     @Override
