@@ -24,7 +24,9 @@ public class NotificationListViewModel extends ViewModel {
 
 
     public LiveData<ArrayList<? extends LyrixNotification>> getNotificationsList() {
-        notificationList.setValue(loadNotifications());
+        if (notificationList.getValue() == null) {
+            notificationList.setValue(loadNotifications());
+        }
         return notificationList;
     }
 
